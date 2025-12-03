@@ -1,2 +1,3 @@
-# august-malachi-webdesign
-Professional web design business website for August &amp; Malachi - Showcasing our services and pricing
+# IndyAugMal
+
+Professional web design services for Indianapolis small businesses - Building your online presence
