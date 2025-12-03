@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IndyAugMal - Professional website design and development for Indianapolis small businesses. Building online presence for local businesses.">
     <title>IndyAugMal - Professional Web Design for Indianapolis Businesses</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* Additional homepage-specific styles */
         * {
             margin: 0;
             padding: 0;
@@ -30,6 +32,51 @@
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
+        }
+
+        /* Scroll Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         /* Header */
@@ -71,11 +118,27 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-cta {
@@ -85,12 +148,37 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .nav-cta:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-cta span {
+            position: relative;
+            z-index: 1;
         }
 
         /* Hero Section */
@@ -101,6 +189,27 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Parallax effect for hero */
+        @media (prefers-reduced-motion: no-preference) {
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+                background-size: 50px 50px;
+                animation: parallax 20s linear infinite;
+                pointer-events: none;
+            }
+
+            @keyframes parallax {
+                0% { transform: translate(0, 0); }
+                100% { transform: translate(50px, 50px); }
+            }
         }
 
         .hero::before {
@@ -126,6 +235,7 @@
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero p {
@@ -133,6 +243,18 @@
             margin-bottom: 2rem;
             opacity: 0.95;
             line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-buttons {
@@ -150,6 +272,8 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
@@ -157,9 +281,32 @@
             color: var(--primary-blue);
         }
 
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
         .btn-primary:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
         }
 
         .btn-secondary {
@@ -171,6 +318,8 @@
         .btn-secondary:hover {
             background: var(--white);
             color: var(--primary-blue);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
         }
 
         /* About Section */
@@ -243,13 +392,31 @@
             padding: 2.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.05;
+            transition: left 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            left: 0;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .service-card.popular {
@@ -297,11 +464,25 @@
             color: var(--primary-blue);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .service-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+            display: inline-block;
         }
 
         .service-link:hover {
             color: var(--primary-teal);
+            transform: translateX(5px);
+        }
+
+        .service-link:hover::after {
+            transform: translateX(5px);
         }
 
         .pricing-note {
@@ -438,11 +619,13 @@
         <nav>
             <div class="logo">IndyAugMal</div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
             </ul>
-            <a href="#contact" class="nav-cta">Get Started</a>
+            <a href="contact.html" class="nav-cta"><span>Get Started</span></a>
         </nav>
     </header>
 
@@ -452,8 +635,8 @@
             <h1>Building Online Presence for Indianapolis Small Businesses</h1>
             <p>Professional website design and development tailored to help your business thrive in the digital world. We create beautiful, functional websites that drive results.</p>
             <div class="hero-buttons">
-                <a href="pricing.html" class="btn btn-primary">View Pricing</a>
-                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                <a href="pricing.html" class="btn btn-primary"><span>View Pricing</span></a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
             </div>
         </div>
     </section>
@@ -461,8 +644,8 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Who We Are</h2>
-            <div class="about-content">
+            <h2 class="section-title fade-in">Who We Are</h2>
+            <div class="about-content fade-in">
                 <p>We are <strong>August</strong> and <strong>Malachi</strong>, two web developers and designers collaborating to bring exceptional website solutions to Indianapolis small businesses. With our combined expertise in design, development, and digital strategy, we help local businesses establish a strong online presence.</p>
                 
                 <p>Our flexible collaboration approach allows us to adapt to each project's unique needs, ensuring you get the right combination of skills and attention. We work closely with each client to understand their business goals and create websites that truly represent their brand.</p>
@@ -477,29 +660,29 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="services-intro">We offer three tiers of website design and development services to meet the needs of businesses at every stage. Each package is designed to provide exceptional value and professional results.</p>
+            <h2 class="section-title fade-in">Our Services</h2>
+            <p class="services-intro fade-in">We offer three tiers of website design and development services to meet the needs of businesses at every stage. Each package is designed to provide exceptional value and professional results.</p>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card scale-in">
                     <div class="service-tier">Silver Tier</div>
                     <div class="service-price">$1,000</div>
                     <p class="service-description">Single page website - the most basic option for businesses just getting started online.</p>
-                    <a href="pricing.html" class="service-link">Learn More →</a>
+                    <a href="pricing.html" class="service-link">Learn More</a>
                 </div>
                 
-                <div class="service-card popular">
+                <div class="service-card popular scale-in">
                     <div class="service-tier">Gold Tier</div>
                     <div class="service-price">$2,500</div>
                     <p class="service-description">Mid-tier website solution - our most popular offering, perfect for growing businesses.</p>
-                    <a href="pricing.html" class="service-link">Learn More →</a>
+                    <a href="pricing.html" class="service-link">Learn More</a>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card scale-in">
                     <div class="service-tier">Platinum Tier</div>
                     <div class="service-price">$5,000</div>
                     <p class="service-description">Premium website solution with advanced features and custom functionality.</p>
-                    <a href="pricing.html" class="service-link">Learn More →</a>
+                    <a href="pricing.html" class="service-link">Learn More</a>
                 </div>
             </div>
             
@@ -515,8 +698,8 @@
             <h2>Ready to Build Your Online Presence?</h2>
             <p>Let's work together to create a website that helps your Indianapolis business grow and succeed.</p>
             <div class="hero-buttons">
-                <a href="pricing.html" class="btn btn-primary">View Pricing</a>
-                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                <a href="pricing.html" class="btn btn-primary"><span>View Pricing</span></a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
             </div>
         </div>
     </section>
@@ -530,9 +713,12 @@
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <p><a href="#about">About Us</a></p>
-                <p><a href="#services">Services</a></p>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="portfolio.html">Portfolio</a></p>
                 <p><a href="pricing.html">Pricing</a></p>
+                <p><a href="contact.html">Contact</a></p>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
@@ -545,21 +731,7 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
