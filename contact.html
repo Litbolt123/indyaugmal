@@ -6,6 +6,7 @@
     <meta name="description" content="Contact IndyAugMal - Get in touch to discuss your website project for your Indianapolis business.">
     <title>Contact Us - IndyAugMal</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -35,7 +36,8 @@
     <section class="contact-page">
         <div class="contact-container">
             <div class="contact-form fade-in">
-                <h2 style="margin-bottom: 2rem; color: var(--text-dark);">Send Us a Message</h2>
+                <h2 style="margin-bottom: 1rem; color: var(--text-dark);">Send Us a Message</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem; text-align: center;">We'll respond within 24 hours</p>
                 <form>
                     <div class="form-group">
                         <label for="name">Your Name *</label>
@@ -48,33 +50,34 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="business">Business Name</label>
-                        <input type="text" id="business" name="business">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Interest</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service tier</option>
-                            <option value="silver">Silver Tier - $1,000</option>
-                            <option value="gold">Gold Tier - $2,500</option>
-                            <option value="platinum">Platinum Tier - $5,000</option>
-                            <option value="custom">Custom Solution</option>
-                            <option value="not-sure">Not Sure Yet</option>
+                        <label for="help">What can we help you with? *</label>
+                        <select id="help" name="help" required>
+                            <option value="">Select an option</option>
+                            <option value="new-website">I need a new website</option>
+                            <option value="redesign">I need to redesign my existing website</option>
+                            <option value="pricing">I have questions about pricing</option>
+                            <option value="timeline">I want to know about timelines</option>
+                            <option value="other">Other inquiry</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Tell Us About Your Project *</label>
-                        <textarea id="message" name="message" required placeholder="What kind of website are you looking for? What are your goals? Any specific features you need?"></textarea>
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your project, goals, or questions..."></textarea>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--white); border-radius: 8px; font-size: 0.875rem; color: var(--text-light);">
+                        <input type="checkbox" id="privacy" name="privacy" required style="margin-right: 0.5rem;">
+                        <label for="privacy" style="display: inline; font-weight: normal;">I agree to the privacy policy. Your information will be kept confidential and used only to respond to your inquiry.</label>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; text-align: center;">
+                        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" style="display: inline-block;"></div>
+                        <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" style="color: var(--primary-blue);">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" style="color: var(--primary-blue);">Terms of Service</a> apply.</p>
                     </div>
                     
                     <button type="submit" class="btn btn-dark" style="width: 100%;">Send Message</button>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: var(--text-light);">We'll respond within 24 hours during business days</p>
                 </form>
             </div>
 
@@ -94,7 +97,7 @@
                 <div class="contact-card fade-in">
                     <h3>⏰ Response Time</h3>
                     <p>Within 24 Hours</p>
-                    <p style="margin-top: 0.5rem; color: var(--text-light);">We're here to help you get started</p>
+                    <p style="margin-top: 0.5rem; color: var(--text-light);">We typically respond within one business day</p>
                 </div>
             </div>
         </div>
@@ -132,6 +135,12 @@
                 <h3>Contact</h3>
                 <p>Indianapolis, Indiana</p>
                 <p><a href="mailto:contact@indyaugmal.com">contact@indyaugmal.com</a></p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                    <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
