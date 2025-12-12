@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indy AugMal - Pricing</title>
+    <title>Merlin - Pricing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">IndyAugMal</div>
+    <nav class="navbar animate-navbar">
+        <div class="nav-container" style="justify-content: space-between;">
+            <div class="logo-merlin animate-writing animate-logo">Merlin</div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://litbolt123.github.io/indyaugmal/">About</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
             </ul>
             <button class="nav-cta-button">Get Started</button>
         </div>
     </nav>
 
     <header class="site-header">
-        <div class="container">
+        <div class="container animate-content">
             <h1>What price are you willing to pay for online success?</h1>
-            <p class="tagline">Our three tiered pricing is designed to make sure you get everything you need at an afforable price. </p>
+            <p class="tagline">Our three-tiered pricing is designed to make sure you get everything you need at an affordable price. </p>
         </div>
     </header>
 
-    <main class="container">
+    <main class="container animate-buttons">
         <div class="pricing-grid">
             <!-- Essential Tier -->
             <div class="pricing-card">
@@ -132,7 +135,31 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 IndyAugMal. All rights reserved.</p>
+        <p>&copy; 2025 Merlin Web Designs. All rights reserved.</p>
     </footer>
+
+    <script>
+    // Re-use the same per-letter animation helper used on the home page
+    (function(){
+        function wrapLetters(el, delay){
+            const text = el.textContent || '';
+            const chars = Array.from(text.replace(/\s+$/,'').replace(/^\s+/,'')).map(c => c);
+            el.innerHTML = '';
+            chars.forEach((ch, i) => {
+                const span = document.createElement('span');
+                span.className = 'mw-char';
+                span.setAttribute('role','presentation');
+                if (ch === ' ') span.innerHTML = '&nbsp;';
+                else span.textContent = ch;
+                span.style.animationDelay = (i * (delay || 70) + 500) + 'ms';
+                el.appendChild(span);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('.animate-writing').forEach(el => wrapLetters(el, 100));
+        });
+    })();
+    </script>
 </body>
 </html>
